@@ -47,6 +47,14 @@ stack that needs to use the vpc instance, call the static function `importFromSt
 follows the similar pattern to other `fromXXX()` in the CDK.  The object returned is a `Ec2.Vpc` 
 that can be assigned as the network for a Lambda function, the network for an EFS file system, etc.
 
+
+1. Use of global `exports` namespace on AWS
+
+The stack exports functionality of CFT/CDK is used, which is a global namespace.  The name is mangled
+with the stack name, the node.id of your VPC instance, and the names of the fields.  If for some unlikely
+reason you get a collision or see problem please file an issue.  It would be easy to implement options
+for alternative naming algorithms.
+
 # Testing And Development
 The development system is based on [Projen](importFromStackOutput), which while powerful and helpful, 
 unfortunately doesn't have good documentation for a new user.
@@ -80,6 +88,9 @@ unfortunately doesn't have good documentation for a new user.
 
         yarn run test:watch
 
+1. Adding a module dependency.  Do not edit package.json.
+
+        `<editor> .projen.js`
 
 ## Integration Test
 TBD, attempting to implement [Continuous Integration](https://aws.amazon.com/blogs/developer/cdk-pipelines-continuous-delivery-for-aws-cdk-applications/)
