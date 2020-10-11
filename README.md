@@ -34,17 +34,24 @@ Stack and import the VPC and its associated components into another Stack.
 
 1. Add Module:
 
-        npm install --save vpc-export-import
+        npm install --save cdk-vpc-export-import
 
-1. Require Statement:
+1. Import Statement:
 
-        const vpcExportImport = require('vpc-export-import');
+        import VpcPortable from 'cdk-vpc-export-import';
 
 1. General usage:
 
+Use like any `Ec2.Vpc`.  Call the function `exportToStackOutput()` to export from the stack, and in the
+stack that needs to use the vpc instance, call the static function `importFromStackOutput()`, which
+follows the similar pattern to other `fromXXX()` in the CDK.  The object returned is a `Ec2.Vpc` 
+that can be assigned as the network for a Lambda function, the network for an EFS file system, etc.
 
-# Testing
-## Interactive Testing
+# Testing And Development
+The development system is based on [Projen](importFromStackOutput), which while powerful and helpful, 
+unfortunately doesn't have good documentation for a new user.
+
+## Interactive Unit Testing and Development
 1. Run Docker Compose:
 
         docker-compose run app  /bin/bash
@@ -57,8 +64,22 @@ Stack and import the VPC and its associated components into another Stack.
 
         npm install
         
+1. Compile
+
+        yarn run compile
+
 1. Run the unit tests
 
-        npm test test/*.js
+        yarn run test
+
+1. Automatically run compile every time you save a file
+
+        yarn run watch
+
+1. Automatically run tests every time you save a test
+
+        yarn run test:watch
 
 
+## Integration Test
+TBD, attempting to implement [Continuous Integration](https://aws.amazon.com/blogs/developer/cdk-pipelines-continuous-delivery-for-aws-cdk-applications/)
