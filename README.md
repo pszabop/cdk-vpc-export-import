@@ -1,57 +1,44 @@
-# file-system-time-series-database
-This module allows using a file system as a time series database.  It is efficient
-for these queries:
+# AWS CDK Construct - export VPC from one stack, import to another
+Unlike AWS CDK Constructs like DynamoDB, AWS did not provide the ability to easily export a VPC from
+one stack and import it in another.  You can do it, but it's complicated, not documented anywhere, 
+and makes your code messy.  This Construct was designed to solve that problem.
 
-* Get a range of data for an identifier (such as a user id)
-* Get the most recent time for an identifer (such as a user id)
-* Get the earliest time for an identifer (such as a user id)
+Why would one want to export and import a VPC?  Best practices. If for some reason you have to 
+blow away part of your application to redeploy it, you shouldn't destroy your VPCs (or your 
+databases, or...).  In other words stacks instances should be small and modular.  Just like
+any good code.
 
-The number of files in a directory is attempting to be limited to 768,
-though this may be exceeded occasionally.  NFS allows 65535.
+Sure, you could manually create your VPCs and hard-code references to them, but this makes 
+automatic creation of sandboxes very difficult or impossible.
 
-## File System Format
-The data is laid out in the following format, which shards the data
-by month:
+## Object Structure of a VPC
+per the CDK object model, which mirrors that of the CFT and thus the underlying
+objects in AWS.
 
-    /year/group1/group2/8ofid/8ofid/8ofid/id/year-month-day.extension
+        VPC --- CIDRs
+            --- Subnets []
+                --- Routes [] 
+            --- Security Groups []
+            --- ...
 
-For example, for user `deadbeef` with a JSON file, group1 `garmin`,
-group2 `sleeps`:
-
-    /2020/garmin/sleeps/de/ad/be/deadbeef/2020-08-09.json
-
-this will support billions of users with ease, provided the user ID
-has sufficient randomness.
-
-## Performance
-### Performance Assumptions.
-The file system is assumed to have about 10mS of latency or less.
-
-### Parallelism
-Operations are meant to be parallized, so for example if you are looking
-for the latest data the year direcotry would be queried for existence
-in parallel from the start epoch (2020) to today's current date, using
-`Promise.map()` to parallalize.
-
+If you don't export the IDs of every one of these items and import them, you canmot recreate
+the VPC.  There are no working examples, AFAICT, of doing so.
 
 # Usage
-This package was developed to work with AWS's EFS on Lambda, though the file system 
-handle is passed into this library so it doesn't really care.
+Anywhere you want to export a VPC from its and all its associated components from its creation
+Stack and import the VPC and its associated components into another Stack.
 
 ## Module Usage
 
 1. Add Module:
 
-        npm install --save filesystem-timeseries-db
+        npm install --save vpc-export-import
 
 1. Require Statement:
 
-        const FsTimeSeriesDB = require('filesystem-timeseries-db');
+        const vpcExportImport = require('vpc-export-import');
 
 1. General usage:
-
-        const fileSystem = fileHandle;
-        const dbInstance = Object.create(FsTimeSeriesDB).setOptions({rootPath: rootPath});
 
 
 # Testing
