@@ -3,7 +3,7 @@ Unlike AWS CDK Constructs like DynamoDB, AWS did not provide the ability to easi
 one stack and import it in another.  You can do it, but it's complicated, not documented anywhere, 
 and makes your code messy.  This Construct was designed to solve that problem.
 
-Why would one want to export and import a VPC?  Best practices. If for [https://github.com/aws/aws-cdk/issues/9854](some reason) 
+Why would one want to export and import a VPC?  Best practices. If for [some reason](https://github.com/aws/aws-cdk/issues/9854) 
 you have to blow away part of your application to redeploy it, you shouldn't destroy your VPCs (or your 
 databases, or...).  In other words stacks instances should be small and modular.  Just like
 any good code.
