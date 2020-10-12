@@ -9,7 +9,7 @@ const project = new AwsCdkConstructLibrary({
     "cdk",
     "vpc"
   ],
-  cdkVersion: "1.60.0",
+  cdkVersion: "1.63.0",
   cdkDependencies: [
     "@aws-cdk/aws-ec2",
     "@aws-cdk/core"
@@ -18,6 +18,7 @@ const project = new AwsCdkConstructLibrary({
     "@aws-cdk/assert"
   ],
   devDependencies: [
+    "aws-cdk"  
   ]
 });
 

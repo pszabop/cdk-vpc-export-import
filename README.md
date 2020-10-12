@@ -90,7 +90,31 @@ unfortunately doesn't have good documentation for a new user.
 
 1. Adding a module dependency.  Do not edit package.json.
 
-        `<editor> .projen.js`
+        <editor> .projen.js
 
 ## Integration Test
-TBD, attempting to implement [Continuous Integration](https://aws.amazon.com/blogs/developer/cdk-pipelines-continuous-delivery-for-aws-cdk-applications/)
+This needs to be automated.  Why the CDK CLI doesn't have a wrapper NPM package by now, I have no idea.
+I guess that should be next on the list of things I should write.
+
+1. Change to the CD integration test directory
+
+        cd integration-test
+
+1. Run the build command. This will cause a synthesis of the stack and unit tests for the stack to run
+
+        yarn run build
+
+1. Run the deploy commands for the two stacks.  Assumes you have the environment variables or ~/.aws/credentials file mounted
+
+        yarn run deploy exportStack
+        yarn run deploy importStack
+
+1. Run the integration test that tests the network connectivity
+
+        yarn run ??? TBD ???
+
+1. destroy the two stacks
+
+        yarn run cdk destroy importStack
+        yarn run cdk destroy exportStack
+
