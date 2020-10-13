@@ -1,17 +1,19 @@
 import '@aws-cdk/assert/jest';
-import * as util from 'util';
+// @ts-ignore
+import * as util from 'util'; // eslint-disable-line
 import { App } from '@aws-cdk/core';
-import { SrcStack, DestStack } from '../src/main';
+import { DbStack, VpcStack, ApiStack } from '../src/main';
 
 test('Snapshot', () => {
   const app = new App();
-  const exportingStack = new SrcStack(app, 'testExport');
-  const importingStack = new DestStack(app, 'testImport');
+  const dbStack = new DbStack(app, 'testDb');
+  const vpcStack = new VpcStack(app, 'testVpc');
+  const apiStack = new ApiStack(app, 'ApiVpc');
 
-  console.log(util.inspect(exportingStack, false, 5));
-  console.log(util.inspect(importingStack, false, 5));
-  expect(exportingStack).not.toHaveResource('AWS::S3::Bucket');
-  expect(importingStack).not.toHaveResource('AWS::S3::Bucket');
-  expect(app.synth().getStackArtifact(exportingStack.artifactId).template).toMatchSnapshot();
-  expect(app.synth().getStackArtifact(importingStack.artifactId).template).toMatchSnapshot();
+  expect(dbStack).not.toHaveResource('AWS::S3::Bucket');
+  expect(vpcStack).not.toHaveResource('AWS::S3::Bucket');
+  expect(vpcStack).not.toHaveResource('AWS::S3::Bucket');
+  expect(app.synth().getStackArtifact(dbStack.artifactId).template).toMatchSnapshot();
+  expect(app.synth().getStackArtifact(vpcStack.artifactId).template).toMatchSnapshot();
+  expect(app.synth().getStackArtifact(apiStack.artifactId).template).toMatchSnapshot();
 });

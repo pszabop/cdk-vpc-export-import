@@ -8,6 +8,9 @@ const project = new AwsCdkTypeScriptApp({
   name: "integration-test",
   cdkDependencies: [
     "@aws-cdk/aws-ec2",
+    "@aws-cdk/aws-apigateway",
+    "@aws-cdk/aws-dynamodb",
+    "@aws-cdk/aws-lambda",
     "@aws-cdk/core"
   ],
   cdkTestDependencies: [
