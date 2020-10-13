@@ -104,17 +104,29 @@ I guess that should be next on the list of things I should write.
 
         yarn run build
 
+1. Build the lambda code.  AFAICT no toolchain handles this correctly
+
+        cd lambdaSrc
+        npm install
+        cd ..
+
 1. Run the deploy commands for the two stacks.  Assumes you have the environment variables or ~/.aws/credentials file mounted
 
-        yarn run deploy exportStack
-        yarn run deploy importStack
+        yarn run deploy dbStack
+        yarn run deploy vpcStack 
+        yarn run deploy apiStack
 
-1. Run the integration test that tests the network connectivity
+1. Get the URL for the api gateway in the stack output via copy and paste into the next commands
 
-        yarn run ??? TBD ???
+1. Run the integration test that tests the network connectivity by doing a POST and a GET.  Make not of the ID for the GET
 
-1. destroy the two stacks
+        curl -X POST -H "Content-Type: application/json" -d '{"username":"xyz","email":"xyz@example.com"}' <apigatewayurl>/db/id
+        curl -s <apigatewayurl>/prod/db/<id returned from the POST>
 
-        yarn run cdk destroy importStack
-        yarn run cdk destroy exportStack
+1. destroy the two stacks.  Note the reverse order due to dependencies
+
+        yarn run cdk destroy apiStack
+        yarn run cdk destroy vpcStack
+        yarn run cdk destroy apiStack
+
 
