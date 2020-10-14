@@ -1,25 +1,32 @@
-const { AwsCdkConstructLibrary } = require('projen');
+const { Semver, AwsCdkConstructLibrary } = require('projen');
 
 const project = new AwsCdkConstructLibrary({
   authorName: "Paul Szabo",
   authorAddress: "paulszabopnw@gmail.com",
   name: "vpc-export-import",
   repository: "https://github.com/pszabop/vpc-export-import",
+  npmignore: [
+    '/integration-test',
+  ],
+  jestOptions: {
+    ignorePatterns: [
+    "node_modules/",       // default
+    "integration-test/",
+    ],
+  },
   keywords: [
     "cdk",
-    "vpc"
+    "vpc",
   ],
   cdkVersion: "1.63.0",
   cdkDependencies: [
     "@aws-cdk/aws-ec2",
-    "@aws-cdk/core"
+    "@aws-cdk/core",
   ],
   cdkTestDependencies: [
-    "@aws-cdk/assert"
+    "@aws-cdk/assert",
   ],
-  devDependencies: [
-    "aws-cdk"  
-  ]
 });
+
 
 project.synth();

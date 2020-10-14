@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@aws-cdk/assert@^1.60.0":
+"@aws-cdk/assert@^1.63.0":
   version "1.67.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/assert/-/assert-1.67.0.tgz#4ea3b4e2c4b0f05f1b239f0c597b42094b39cac3"
   integrity sha512-p3BkrfXpCwSwiZ3K8fPvKUbr4FKQY4lBSr3ZzmqeMPwgk0b9nlBk3QBFdY60zkBpJpoDwZZ3qi4+vooJrpev3w==
@@ -31,7 +31,7 @@
     "@aws-cdk/core" "1.67.0"
     constructs "^3.0.4"
 
-"@aws-cdk/aws-ec2@^1.60.0":
+"@aws-cdk/aws-ec2@^1.63.0":
   version "1.67.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-ec2/-/aws-ec2-1.67.0.tgz#3ca789a7855f1eec1d3b92ffb15a82c6e9c3532b"
   integrity sha512-hHk2KNtx3MNkG/D36VoFim2OFoDnh0JSGk+yG+ZwTdKbyMbw1cVEzD7fy4MevFrd9qXdnfx+aTYclU+t1swpZA==
@@ -149,7 +149,7 @@
     string-width "^4.2.0"
     table "^6.0.3"
 
-"@aws-cdk/core@1.67.0", "@aws-cdk/core@^1.60.0":
+"@aws-cdk/core@1.67.0", "@aws-cdk/core@^1.63.0":
   version "1.67.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.67.0.tgz#e8fbfaf456e8c83213f33e6f7f0c372a2051ba2f"
   integrity sha512-qAfq/mTcSr5SuhjqQODPEmK24cSki+5Uquw9zHkq+gKue7g98PkzYyR1mDQWneJTeUZa7NqkwepTJq6gbandRQ==
@@ -4821,10 +4821,10 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-projen@^0.3.104:
-  version "0.3.104"
-  resolved "https://registry.yarnpkg.com/projen/-/projen-0.3.104.tgz#734abdae3d195b1a34690e8efe836fa70b4fcad3"
-  integrity sha512-DVHLa9EMKnsn+nvfcvbpLDpKu+dpJXve/K7rWsSCGtYMaza+ebq1rH0G8IUkL2OLZk+FJOI2QPdsMPU381bpVg==
+projen@^0.3.109:
+  version "0.3.109"
+  resolved "https://registry.yarnpkg.com/projen/-/projen-0.3.109.tgz#f4b993f56859ce1a519da60c02d400dc79fd9d45"
+  integrity sha512-gE6vZzN/uTIPbPcXCd928xairLIcvn94g3SFhYgnW9yzW8f0o/kql/eIJjzugvFBuju08cwIJUkMsOd3R0VViQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     chalk "^4.1.0"

@@ -30,7 +30,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.60.0",
+    "@aws-cdk/assert": "^1.63.0",
     "@types/jest": "^26.0.7",
     "@types/node": "^10.17.0",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
@@ -46,19 +46,19 @@
     "jsii-pacmak": "^1.11.0",
     "jsii-release": "^0.1.6",
     "json-schema": "^0.2.5",
-    "projen": "^0.3.104",
+    "projen": "^0.3.109",
     "standard-version": "^9.0.0",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-ec2": "^1.60.0",
-    "@aws-cdk/core": "^1.60.0",
+    "@aws-cdk/aws-ec2": "^1.63.0",
+    "@aws-cdk/core": "^1.63.0",
     "constructs": "^3.0.4"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.60.0",
-    "@aws-cdk/core": "^1.60.0"
+    "@aws-cdk/aws-ec2": "^1.63.0",
+    "@aws-cdk/core": "^1.63.0"
   },
   "bundledDependencies": [],
   "keywords": [
@@ -133,10 +133,12 @@
     "clearMocks": true,
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "node_modules/",
+      "integration-test/"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "node_modules/",
+      "integration-test/"
     ],
     "preset": "ts-jest",
     "testMatch": [
