@@ -12,9 +12,6 @@ const project = new AwsCdkConstructLibrary ({
   cdkVersion: "1.63.0",
   cdkDependencies: [
     "@aws-cdk/aws-ec2",
-    "@aws-cdk/aws-apigateway",
-    "@aws-cdk/aws-dynamodb",
-    "@aws-cdk/aws-lambda",
     "@aws-cdk/core"
   ],
   cdkTestDependencies: [
