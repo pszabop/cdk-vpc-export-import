@@ -4,12 +4,12 @@ one stack and import it in another.  You can do it, but it's complicated, not do
 and makes your code messy.  This Construct was designed to solve that problem.
 
 Why would one want to export and import a VPC?  Best practices. If for [some reason](https://github.com/aws/aws-cdk/issues/9854) 
-you have to blow away part of your application to redeploy it, you shouldn't destroy your VPCs (or your 
+you have to destory part of your application to redeploy it, you shouldn't destroy your VPCs (or your 
 databases, or...).  In other words stacks instances should be small and modular.  Just like
-any good code.
+any good code or deployment.
 
 Sure, you could manually create your VPCs and hard-code references to them, but this makes 
-automatic creation of sandboxes very difficult or impossible.
+automatic creation of sandboxes very difficult or impossible, and isn't a very good practice in general.
 
 ## Object Structure of a VPC
 per the CDK object model, which mirrors that of the CFT and thus the underlying
@@ -24,7 +24,7 @@ objects in AWS.
 
 If you don't export the IDs of every one of these items and import them, you canmot recreate
 the VPC without warnings, subtle failures in other entities such as EFS and Lambda, or
-outright failures.  There are no working examples, AFAICT, of doing so.
+outright failures.  There are no working examples, AFAICT, of doing so.  Now, there is.
 
 # Usage
 Anywhere you want to export a VPC from its and all its associated components from its creation
