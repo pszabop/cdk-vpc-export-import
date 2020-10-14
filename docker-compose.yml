@@ -13,4 +13,4 @@ services:
       - AWS_SDK_LOAD_CONFIG
     volumes:
     - $HOME/.aws/:/root/.aws/:ro
-    - ./:/home/code/
+    - ../:/home/code/

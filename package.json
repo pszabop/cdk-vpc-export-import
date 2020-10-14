@@ -52,12 +52,18 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-apigateway": "^1.63.0",
+    "@aws-cdk/aws-dynamodb": "^1.63.0",
     "@aws-cdk/aws-ec2": "^1.63.0",
+    "@aws-cdk/aws-lambda": "^1.63.0",
     "@aws-cdk/core": "^1.63.0",
     "constructs": "^3.0.4"
   },
   "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.63.0",
+    "@aws-cdk/aws-dynamodb": "^1.63.0",
     "@aws-cdk/aws-ec2": "^1.63.0",
+    "@aws-cdk/aws-lambda": "^1.63.0",
     "@aws-cdk/core": "^1.63.0"
   },
   "bundledDependencies": [],
@@ -133,12 +139,10 @@
     "clearMocks": true,
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
-      "node_modules/",
-      "integration-test/"
+      "/node_modules/"
     ],
     "testPathIgnorePatterns": [
-      "node_modules/",
-      "integration-test/"
+      "/node_modules/"
     ],
     "preset": "ts-jest",
     "testMatch": [
